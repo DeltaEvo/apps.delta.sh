@@ -1,0 +1,24 @@
+<extends src='layout.html'>
+  <block name='content'>
+    <h1>Apps</h1>
+    <div class="items">
+      <each loop="app of apps">
+        <a
+          class="item"
+          href="{{ app.start_url }}"
+          target="_blank"
+          rel="noopener"
+          style="background-color: {{ app.background_color }}; color: {{ app.text_color }};"
+        >
+          <img
+            width="96px"
+            height="96px"
+            src="{{ app.icons[0].src }}" 
+            srcset="{{ app.icons.map(({ src, sizes }) => `${src} ${sizes.split('x')[0]}w`) }}"
+          >
+          <h3>{{ app.name }}</h3>
+        </a>
+      </each>
+    </div>
+  </block>
+</extends>
